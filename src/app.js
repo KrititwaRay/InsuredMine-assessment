@@ -2,9 +2,12 @@ import "dotenv/config";
 import express from "express";
 const app = express();
 
+import connectDb from "./configuration/db.js";
 import { CommonHelper } from "./helper/common_helper.js";
 import { httpCodes } from "./helper/httpCodes.js"
 
+/* MongoDb */
+connectDb();
 
 let global_helper = new CommonHelper();
 
@@ -26,5 +29,5 @@ app.use((req, res, next) => {
   res.status(404).json({ error: 'Not Found' });
 });
 app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`)
+  console.log(`Server is listening on port: ${PORT}`)
 })
