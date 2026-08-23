@@ -1,4 +1,29 @@
+## Task 1 ##
+Implemented API Endpoints
 
+1. Upload CSV/XLSX (POST /api/user/upload)
+    Content-Type: multipart/form-data
+    Form Field: file (File)
+
+2. Search Policy by Username (GET /api/user/search-policy)
+
+3. Aggregated Policy by User (GET /api/user/aggregated-policies)
+
+
+src/
+└── domain/
+    └── user/
+        ├── controller/
+        │   └── user.controller.js      
+        ├── middleware/
+        │   └── user.middleware.js     
+        ├── model/
+        │   └── user.model.js           
+        ├── routes/
+        │   └── user.routes.js          
+        └── service/
+            ├── user.service.js         
+            └── uploadWorker.js        
 
 
 ## Task 2 ##
