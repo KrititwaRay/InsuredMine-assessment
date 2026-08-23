@@ -4,7 +4,8 @@ const app = express();
 
 import connectDb from "./configuration/db.js";
 import { CommonHelper } from "./helper/common_helper.js";
-import { httpCodes } from "./helper/httpCodes.js"
+import { httpCodes } from "./helper/httpCodes.js";
+import { startCpuMonitor } from "./configuration/cpuMonitor.js";
 
 /* MongoDb */
 connectDb();
@@ -28,6 +29,14 @@ const PORT = process.env.PORT;
 app.use((req, res, next) => {
   res.status(404).json({ error: 'Not Found' });
 });
+
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`)
+  // Start real-time CPU tracking
+  // startCpuMonitor({
+  //   threshold: 70,       // 70% threshold trigger
+  //   checkInterval: 5000, // Checks every 5 seconds
+  // });
 })
+

@@ -7,8 +7,9 @@
   "type": "module",
   "main": "./src/app.js",
   "scripts": {
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js"
+    "start": "pm2 start src/app.js --name insuredmine-assessment --no-daemon",
+    "dev": "nodemon ./src/app.js",
+    "stop": "pm2 delete insuredmine-assessment"
   },
   "dependencies": {
     "@agendajs/mongo-backend": "^4.0.3",
@@ -17,6 +18,7 @@
     "express": "^5.2.1",
     "express-validator": "^7.3.1",
     "mongoose": "^9.9.3",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "pm2": "^7.0.3"
   }
 }
