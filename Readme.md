@@ -42,6 +42,14 @@ src/
 │   └── cpuMonitor.js   # Measures CPU load & exits on 70% threshold
 └── app.js              # Server entry point initializing startCpuMonitor()
 
+app.listen(PORT, () => {
+  
+  startCpuMonitor({
+    threshold: 70,       // 70% threshold trigger
+    checkInterval: 5000, // Checks every 5 seconds
+  });
+
+})
 
 ## Task 2 ##
 ## 2. Create a post-service that takes the message, day, and time in body parameters and it inserts that message into DB at that particular day and time.

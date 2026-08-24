@@ -34,9 +34,9 @@ app.use((req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`)
   // Start real-time CPU tracking
-  // startCpuMonitor({
-  //   threshold: 70,       // 70% threshold trigger
-  //   checkInterval: 5000, // Checks every 5 seconds
-  // });
+  startCpuMonitor({
+    threshold: 70,       // 70% threshold trigger
+    checkInterval: 5000, // Checks every 5 seconds
+  });
 })
 

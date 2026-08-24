@@ -3,35 +3,6 @@ import { validationResult } from "express-validator";
 export class CommonMiddleware {
     constructor() { }
 
-    isAuthenticated = async (req, res, next) => {
-        try {
-            const authHeader = req.headers.authorization;
-
-            if (!authHeader || !authHeader.startsWith("Bearer ")) {
-                return global.Helpers.notAuthorized(res, "Access denied. Authorization token is missing or invalid. Please login.");
-            }
-
-            const token = authHeader.split(" ")[1];
-
-            const decodedValue = jwt.verify(
-                token,
-                process.env.JWT_SECRET
-            );
-
-            if (!decodedValue || !decodedValue._id) {
-                return global.Helpers.notAuthorized(res, "Access denied. Please login.");
-            }
-
-            req.user = decodedValue;
-
-            next();
-
-        } catch (error) {
-            return global.Helpers.sendBadRequest(res, 'Something went wrong. Please try again.')
-        }
-    };
-
-
     checkErrors = async (req, res, next) => {
         const errors = validationResult(req);
 
